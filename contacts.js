@@ -87,6 +87,10 @@ const removeContact = async (id) => {
     const removeContact = contacts.splice(idx, 1);
     await updateContacts(contacts);
     return removeContact;
+
+    // const newContacts = contacts.filter((_, index) => index !== idx);
+    // await updateContacts(newContacts);
+    // return contacts[idx];
   } catch (err) {
     console.error(err);
   }
