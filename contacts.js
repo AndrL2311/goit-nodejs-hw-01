@@ -1,3 +1,4 @@
+const { v4 } = require("uuid");
 const fs = require("fs").promises;
 const path = require("path");
 
@@ -7,8 +8,8 @@ const contactsPath = path.join(__dirname, "db", "contacts.json");
 /*
 1. Получить все контакты. --> listContacts
 2. Получить один контакт по id. --> getContactById
-3. Удалить контакт по id. --> removeContact
-4. Добавить контакт в список. --> addContact
+3. Добавить контакт в список. --> addContact
+4. Удалить контакт по id. --> removeContact
 5. Обновить контакт по id. --> changeContact
 */
 
@@ -41,13 +42,21 @@ const getContactById = async (id) => {
 //   // ...твой код
 // }
 
-// function addContact(name, email, phone) {
-//     // ...твой код
-// }
+const addContact = async (name, email, phone) => {
+  try {
+    const newContact = { id: v4(), name, email, phone };
+    const contacts = await listContacts();
+    contacts.push(newContact);
+    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    return newContact;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 module.exports = {
   listContacts,
   getContactById,
   // removeContact,
-  // addContact,
+  addContact,
 };
