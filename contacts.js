@@ -42,13 +42,39 @@ const getContactById = async (id) => {
 //   // ...твой код
 // }
 
+const updateContacts = async (contacts) => {
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+};
+
 const addContact = async (name, email, phone) => {
   try {
     const newContact = { id: v4(), name, email, phone };
     const contacts = await listContacts();
     contacts.push(newContact);
-    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    await updateContacts(contacts);
     return newContact;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const updateById = async (id, name, email, phone) => {
+  const contacts = await listContacts();
+
+  const idx = contacts.findIndex((item) => item.id === String(id));
+  if (idx === -1) {
+    return null;
+  }
+
+  contacts[idx] = {
+    ...contacts[idx],
+    name,
+    email,
+    phone,
+  };
+  await updateContacts(contacts);
+  return contacts[idx];
+  try {
   } catch (err) {
     console.error(err);
   }
@@ -57,6 +83,7 @@ const addContact = async (name, email, phone) => {
 module.exports = {
   listContacts,
   getContactById,
+  updateById,
   // removeContact,
   addContact,
 };

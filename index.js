@@ -18,6 +18,16 @@ async function invokeAction({ action, id, name, email, phone }) {
       console.log(newContact);
       break;
 
+    case "updateById":
+      const updateContact = await contactOperations.updateById(
+        id,
+        name,
+        email,
+        phone
+      );
+      console.log(updateContact);
+      break;
+
     // case "remove":
     //   // ... id
     //   break;
