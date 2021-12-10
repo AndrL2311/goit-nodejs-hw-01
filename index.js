@@ -28,9 +28,10 @@ async function invokeAction({ action, id, name, email, phone }) {
       console.log(updateContact);
       break;
 
-    // case "remove":
-    //   // ... id
-    //   break;
+    case "remove":
+      const removeContact = await contactOperations.removeContact(id);
+      console.log(removeContact);
+      break;
 
     default:
       console.warn("\x1B[31m Unknown action type!");
