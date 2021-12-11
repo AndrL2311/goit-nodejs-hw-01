@@ -9,27 +9,31 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      const contact = await contactOperations.getContactById(id);
+      const contact = await contactOperations.getContactById({ id });
       console.log(contact);
       break;
 
     case "add":
-      const newContact = await contactOperations.addContact(name, email, phone);
+      const newContact = await contactOperations.addContact({
+        name,
+        email,
+        phone,
+      });
       console.log(newContact);
       break;
 
     case "updateById":
-      const updateContact = await contactOperations.updateById(
+      const updateContact = await contactOperations.updateById({
         id,
         name,
         email,
-        phone
-      );
+        phone,
+      });
       console.log(updateContact);
       break;
 
     case "remove":
-      const removeContact = await contactOperations.removeContact(id);
+      const removeContact = await contactOperations.removeContact({ id });
       console.log(removeContact);
       break;
 
