@@ -10,7 +10,7 @@ node index.js --action get --id 5
 
 <img src="./screenshot/get.png" alt="list1" with="400" />
 
-# Добавялем контакт
+# Добавляем контакт
 
 node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
 
