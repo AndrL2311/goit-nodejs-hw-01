@@ -2,8 +2,7 @@
 
 node index.js --action list
 
-<img src="./screenshot/list1.png" alt="list1" with="400" />
-<img src="./screenshot/list2.png" alt="list2" with="400" />
+<img src="./screenshot/list.png" alt="list1" with="400" />
 
 # Получаем контакт по id
 
