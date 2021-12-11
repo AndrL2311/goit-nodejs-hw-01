@@ -9,9 +9,9 @@ const contactsPath = path.join(__dirname, "db", "contacts.json");
 1. Получить все контакты. --> listContacts
 2. Получить один контакт по id. --> getContactById
 3. Добавить контакт в список. --> addContact
-4. Обновить контакт по id. --> changeContact
+4. Обновить контакт по id. --> updateById
 5. Удалить контакт по id. --> removeContact
-
+ 
 */
 
 const listContacts = async () => {
